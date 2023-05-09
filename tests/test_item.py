@@ -40,8 +40,7 @@ def test_repr(item1):
 
 def test_name_1(item1):
     assert item1.name == "Смартфон"
-    with raises(Exception):
+    with raises(ValueError):
         item1.name = "СуперСмартфон"
     item1.name = "Яблокофон"
     assert item1.name == "Яблокофон"
-
