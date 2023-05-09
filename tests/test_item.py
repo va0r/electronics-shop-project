@@ -38,5 +38,10 @@ def test_repr(item1):
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
 
 
-def test_name(item1):
-    item1.name == "Смартфон"
+def test_name_1(item1):
+    assert item1.name == "Смартфон"
+    with raises(Exception):
+        item1.name = "СуперСмартфон"
+    item1.name = "Яблокофон"
+    assert item1.name == "Яблокофон"
+
