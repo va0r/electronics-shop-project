@@ -23,6 +23,12 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f"{self.__name}"
+
     @property
     def name(self) -> str:
         """
@@ -53,9 +59,6 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= self.pay_rate
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
     @classmethod
     def instantiate_from_csv(cls):
