@@ -44,3 +44,7 @@ def test_name_1(item1):
         item1.name = "СуперСмартфон"
     item1.name = "Яблокофон"
     assert item1.name == "Яблокофон"
+
+
+def test_str(item1):
+    assert str(item1) == "Смартфон"
