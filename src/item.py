@@ -79,3 +79,10 @@ class Item:
         :return: Число в нужном нам формате.
         """
         return int(number.split(".")[0])
+
+    def __add__(self, other):
+        """Сложение по количеству товара"""
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise TypeError("Складывать можно только с экземплярами классов, принадлежащих Phone или Item")

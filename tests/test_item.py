@@ -2,6 +2,7 @@ import pytest
 from _pytest.python_api import raises
 
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
@@ -48,3 +49,11 @@ def test_name_1(item1):
 
 def test_str(item1):
     assert str(item1) == "Смартфон"
+
+
+def test__add__():
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    item1 = Item('Смартфон', 10, 3)
+    assert item1 + phone1 == 8
+    with raises(TypeError):
+        assert item1 + 10
