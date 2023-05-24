@@ -1,9 +1,9 @@
 import pytest
 from _pytest.python_api import raises
-from src.settings import CSV_FILE, CSV_FILE_ERROR
 
 from src.item import Item, InstantiateCSVError
 from src.phone import Phone
+from src.settings import CSV_FILE, CSV_FILE_ERROR
 
 
 @pytest.fixture
@@ -36,7 +36,6 @@ def test_InstantiateCSVError():
     assert str(InstantiateCSVError()) == 'Ошибка'
     with raises(Exception):
         assert InstantiateCSVError() == 'Ошибка'
-
 
 
 def test_string_to_number():
