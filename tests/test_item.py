@@ -1,7 +1,8 @@
 import pytest
 from _pytest.python_api import raises
+from src.settings import CSV_FILE, CSV_FILE_ERROR
 
-from src.item import Item
+from src.item import Item, InstantiateCSVError
 from src.phone import Phone
 
 
@@ -23,8 +24,19 @@ def test_apply_discount(item1):
 def test_instantiate_from_csv():
     assert type(Item.all) is list
     Item.all.clear()
-    Item.instantiate_from_csv()
+    Item.instantiate_from_csv(path=CSV_FILE)
     assert len(Item.all) == 5
+    with raises(Exception):
+        raise Item.instantiate_from_csv(path='error.csv') == 'Ошибка'
+    with raises(Exception):
+        raise Item.instantiate_from_csv(path=CSV_FILE_ERROR) == 'Файл поврежден'
+
+
+def test_InstantiateCSVError():
+    assert str(InstantiateCSVError()) == 'Ошибка'
+    with raises(Exception):
+        assert InstantiateCSVError() == 'Ошибка'
+
 
 
 def test_string_to_number():
